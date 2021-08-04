@@ -1,0 +1,9 @@
+td, th {
+  text-align: center;
+  padding: 6px;
+}
+
+.ss {
+  font-family: 'Libre Barcode 128 Text', cursive;
+  font-size: 24px;
+}
