@@ -22,14 +22,16 @@ namespace DemoCodigoBarras.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Get()
+        [HttpPost]
+        public async Task<ActionResult> Get([FromBody] Base97TelecommBanco base97)
         {
             Base97TelecommBanco b97 = new Base97TelecommBanco();
-            b97.Convenio = "C0001";
-            b97.Referencia = "SL202186756521PSWS";
-            b97.Fecha = "10/08/2021";
-            b97.Importe = "420.00";
+            
+            b97.Convenio = base97.Convenio;
+            b97.Referencia = base97.Referencia;           
+            b97.Fecha = base97.Fecha;
+            b97.Importe = base97.Importe;
+            
             Util.CalcularBase97TelecommBanco(b97);
             return Ok( new { 
                 cadena= b97.CadenaFinal 

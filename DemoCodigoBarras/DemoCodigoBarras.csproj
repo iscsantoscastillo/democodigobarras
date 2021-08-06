@@ -29,6 +29,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\barra.component.ts" />
+    <None Remove="ClientApp\src\app\models\Base97.interface.ts" />
+    <None Remove="ClientApp\src\app\models\response.interface.ts" />
     <None Remove="ClientApp\src\app\rest.service.ts" />
   </ItemGroup>
 

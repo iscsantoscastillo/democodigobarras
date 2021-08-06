@@ -1,8 +1,66 @@
-<h1>
-</h1>
-<button (click)="prueba(codigo.value)">
-  Prueba
-</button>
-<input #codigo>
 
+<form [formGroup]="loginForm" (ngSubmit)="onPress(loginForm.value)">
+
+
+  <div class="container">
+    <div class="row row-cols-4">
+      <div class="col">
+        <label for="convenio">Convenio</label>
+      </div>
+      <div class="col">
+        <input type="text" id="convenio" formControlName="convenio" />
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row row-cols-4">
+      <div class="col">
+        <label for="referencia">Referencia</label>
+      </div>
+      <div class="col">
+        <input type="text" id="referencia" formControlName="referencia" />
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row row-cols-4">
+      <div class="col">
+        <label for="fecha">Fecha</label>
+      </div>
+      <div class="col">
+        <input type="text" id="fecha" formControlName="fecha" />
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row row-cols-4">
+      <div class="col">
+        <label for="importe">Importe</label>
+      </div>
+      <div class="col">
+        <input type="text" id="importe" formControlName="importe" />
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row row-cols-4">
+      <div class="col">
+
+        <input type="submit" value="Generar" />
+      </div>
+      <div class="col">
+        <label></label>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+</form>
+
+<br>
+<br>
 <ngx-barcode [bc-value]="value" [bc-display-value]="true"></ngx-barcode>

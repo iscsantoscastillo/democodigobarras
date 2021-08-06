@@ -1,15 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Barra } from '../barra.component';
+import { Base97I } from '../models/Base97.interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
-  barra: Barra;
-  constructor(private RestService: RestService) { }
+export class HomeComponent implements OnInit {
 
+  loginForm = new FormGroup({
+    convenio: new FormControl('C0001', Validators.required),
+    referencia: new FormControl('SL202186756521PSWS', Validators.required),
+    fecha: new FormControl('10/08/2021', Validators.required),
+    importe: new FormControl('410.78', Validators.required)
+
+  })
+
+  barra: Barra;
+  constructor(private rest: RestService) { }
+
+  ngOnInit(): void {
+    
+  }
+  
   elementType = 'svg';
   value = '00000';
   format = 'CODE128';
@@ -43,13 +58,17 @@ export class HomeComponent {
     'pharmacode',
     'codabar'
   ];
-  prueba(codigo: string): void {
 
-    this.RestService.get('https://localhost:44360/WeatherForecast').subscribe(respuesta => {
-      //this.barra = respuesta;
-      console.log(respuesta);
-      this.barra = <any>respuesta;
-      this.value = this.barra.cadena;
-    })        
+  prueba(codigo: string): void {
+    
+    
+  }
+
+  onPress(form: Base97I) {
+   
+    this.rest.consumir(form).subscribe(data => {
+      //Se asigna el valor de respuesta del API rest.
+      this.value = data.cadena
+    })
   }
 }
